@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JewelleryStoreManagementSystem", "JewelleryStoreManagementSystem.csproj", "{4A8025B6-00A8-4D07-B933-E089CB193A7F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A8025B6-00A8-4D07-B933-E089CB193A7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A8025B6-00A8-4D07-B933-E089CB193A7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A8025B6-00A8-4D07-B933-E089CB193A7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A8025B6-00A8-4D07-B933-E089CB193A7F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {728CA7C9-6BC6-4CC5-8FDD-C9B58F2F764A}
+	EndGlobalSection
+EndGlobal
