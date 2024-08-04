@@ -1,6 +1,6 @@
-﻿using JewelleryStoreManagementSystem.Models;
+﻿using JewelleryStoreManagementSystem.Data.Models;
 
-namespace JewelleryStoreManagementSystem.Repositories
+namespace JewelleryStoreManagementSystem.Data.Repositories
 {
     public class CustomerRepository : Repository<Customer>
     {

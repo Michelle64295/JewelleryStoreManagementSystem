@@ -1,4 +1,4 @@
-using JewelleryStoreManagementSystem.Repositories;
+using JewelleryStoreManagementSystem.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JewelleryStoreManagementSystem.Controllers

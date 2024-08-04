@@ -1,7 +1,7 @@
-﻿using JewelleryStoreManagementSystem.Models;
+﻿using JewelleryStoreManagementSystem.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace JewelleryStoreManagementSystem
+namespace JewelleryStoreManagementSystem.Data
 {
     public class JewelleryStoreManagementSystemContext : DbContext
     {
@@ -18,7 +18,7 @@ namespace JewelleryStoreManagementSystem
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "JewelleryStore.db");
+            DbPath = Path.Join(path, "JewelleryStore.db");
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

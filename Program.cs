@@ -1,6 +1,6 @@
-using JewelleryStoreManagementSystem;
-using JewelleryStoreManagementSystem.Models;
-using JewelleryStoreManagementSystem.Repositories;
+using JewelleryStoreManagementSystem.Data;
+using JewelleryStoreManagementSystem.Data.Models;
+using JewelleryStoreManagementSystem.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

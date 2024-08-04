@@ -1,4 +1,4 @@
-﻿namespace JewelleryStoreManagementSystem.Models
+﻿namespace JewelleryStoreManagementSystem.Data.Models
 {
     public class Order
     {

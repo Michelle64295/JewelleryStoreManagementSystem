@@ -1,4 +1,4 @@
-﻿namespace JewelleryStoreManagementSystem.Repositories
+﻿namespace JewelleryStoreManagementSystem.Data.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
