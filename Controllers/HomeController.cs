@@ -14,39 +14,6 @@ namespace JewelleryStoreManagementSystem.Controllers
             _customerRepository = customerRepository;
         }
 
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Login(int id, string password)
-        {
-            List<(int adminId, string password)> adminCredentials = _adminRepository.GetAdminCredentials();
-            List<(int customerId, string password)> customerCredentials = _customerRepository.GetCustomerCredentials();
-
-            var admin = adminCredentials.FirstOrDefault(a => a.adminId == id && a.password == password);
-            var customer = customerCredentials.FirstOrDefault(c => c.customerId == id && c.password == password);
-
-            if (admin != default)
-            {
-                ViewBag.FullName = _adminRepository.GetAdminById(id).FullName;
-                return View("AdminPage");
-            }
-            if (customer != default)
-            {
-                ViewBag.FullName = _customerRepository.GetCustomerById(id).FullName;
-                return View("CustomerPage");
-            }
-            else
-            {
-                ViewBag.Message = "Invalid ID or Password";
-                return View();
-            }
-
-        }
-
         public IActionResult AdminPage()
         {
             return View();
@@ -69,10 +36,10 @@ namespace JewelleryStoreManagementSystem.Controllers
         //    return View();
         //}
 
-        //public IActionResult Privacy()
-        //{
-        //    return View();
-        //}
+        public IActionResult Privacy()
+        {
+            return View();
+        }
 
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         //public IActionResult Error()
