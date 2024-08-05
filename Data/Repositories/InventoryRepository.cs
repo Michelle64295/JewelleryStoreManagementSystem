@@ -11,6 +11,10 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
             _context = context;
         }
 
+        public IEnumerable<Inventory> GetAllInventory()
+        {
+            return _context.Inventories.ToList();
+        }
     }
 }
 

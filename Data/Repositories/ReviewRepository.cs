@@ -11,5 +11,9 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
             _context = context;
         }
 
+        public IEnumerable<Review> GetAllReviews()
+        {
+            return _context.Reviews.ToList();
+        }
     }
 }

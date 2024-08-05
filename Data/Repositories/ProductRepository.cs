@@ -11,5 +11,14 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
             _context = context;
         }
 
+        public IEnumerable<Product> GetAllProducts()
+        {
+            return _context.Products.ToList();
+        }
+
+        public Product GetProductByName(string name)
+        {
+            return _context.Products.SingleOrDefault(c => c.Name == name);
+        }
     }
 }

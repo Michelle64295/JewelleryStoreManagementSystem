@@ -1,4 +1,5 @@
 ﻿using JewelleryStoreManagementSystem.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace JewelleryStoreManagementSystem.Data.Repositories
 {
@@ -13,7 +14,7 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
 
         public IEnumerable<Customer> GetAllCustomers()
         {
-            return _context.Customers.ToList();
+            return _context.Customers.Include(a => a.Orders).ToList();
         }
 
         public bool IsValidCustomerCredentials(string email, string password)
@@ -25,6 +26,5 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
         {
             return _context.Customers.SingleOrDefault(c => c.Email == email);
         }
-
     }
 }
