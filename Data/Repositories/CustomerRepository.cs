@@ -10,18 +10,20 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
         {
             _context = context;
         }
-        public List<(int id, string password)> GetCustomerCredentials()
+
+        public IEnumerable<Customer> GetAllCustomers()
         {
-            return _context.Customers
-                           .Select(c => new { c.CustomerId, c.Password })
-                           .ToList()
-                           .Select(c => (c.CustomerId, c.Password))
-                           .ToList();
+            return _context.Customers.ToList();
         }
 
-        public Customer GetCustomerById(int id)
+        public bool IsValidCustomerCredentials(string email, string password)
         {
-            return _context.Customers.SingleOrDefault(c => c.CustomerId == id);
+            return GetAllCustomers().Any(c => c.Email == email && c.Password == password);
+        }
+
+        public Customer GetCustomerByEmail(string email)
+        {
+            return _context.Customers.SingleOrDefault(c => c.Email == email);
         }
 
     }

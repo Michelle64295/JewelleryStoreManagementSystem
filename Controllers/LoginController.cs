@@ -21,30 +21,23 @@ namespace JewelleryStoreManagementSystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(int id, string password)
+        public IActionResult Login(string email, string password)
         {
-            List<(int adminId, string password)> adminCredentials = _adminRepository.GetAdminCredentials();
-            List<(int customerId, string password)> customerCredentials = _customerRepository.GetCustomerCredentials();
-
-            var admin = adminCredentials.FirstOrDefault(a => a.adminId == id && a.password == password);
-            var customer = customerCredentials.FirstOrDefault(c => c.customerId == id && c.password == password);
-
-            if (admin != default)
+            if (_adminRepository.IsValidAdminCredentials(email, password))
             {
-                ViewBag.FullName = _adminRepository.GetAdminById(id).FullName;
+                ViewBag.FullName = _adminRepository.GetAdminByEmail(email).FullName;
                 return View("AdminPage");
             }
-            if (customer != default)
+            if (_customerRepository.IsValidCustomerCredentials(email, password))
             {
-                ViewBag.FullName = _customerRepository.GetCustomerById(id).FullName;
+                ViewBag.FullName = _customerRepository.GetCustomerByEmail(email).FullName;
                 return View("CustomerPage");
             }
             else
             {
-                ViewBag.Message = "Invalid ID or Password";
+                ViewBag.Message = "Invalid Email or Password";
                 return View();
             }
-
         }
 
         public IActionResult AdminPage()

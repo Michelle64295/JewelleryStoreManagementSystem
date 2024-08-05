@@ -9,18 +9,19 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
         {
             _context = context;
         }
-        public List<(int id, string password)> GetAdminCredentials()
+        public IEnumerable<Admin> GetAllAdmins()
         {
-            return _context.Admins
-                           .Select(a => new { a.AdminId, a.Password })
-                           .ToList()
-                           .Select(a => (a.AdminId, a.Password))
-                           .ToList();
+            return _context.Admins.ToList();
         }
 
-        public Admin GetAdminById(int id)
+        public bool IsValidAdminCredentials(string email, string password)
         {
-            return _context.Admins.SingleOrDefault(a => a.AdminId == id);
+            return GetAllAdmins().Any(c => c.Email == email && c.Password == password);
+        }
+
+        public Admin GetAdminByEmail(string email)
+        {
+            return _context.Admins.SingleOrDefault(c => c.Email == email);
         }
     }
 }
