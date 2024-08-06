@@ -25,19 +25,23 @@ namespace JewelleryStoreManagementSystem.Controllers
         {
             if (_adminRepository.IsValidAdminCredentials(email, password))
             {
-                ViewBag.FullName = _adminRepository.GetAdminByEmail(email).FullName;
                 return View("AdminPage");
             }
             if (_customerRepository.IsValidCustomerCredentials(email, password))
             {
-                ViewBag.FullName = _customerRepository.GetCustomerByEmail(email).FullName;
-                return View("CustomerPage");
+                return RedirectToAction("Home", "Home");
             }
             else
             {
-                ViewBag.Message = "Invalid Email or Password";
+                ModelState.AddModelError(string.Empty, "Invalid Email or Password.");
                 return View();
             }
+        }
+
+        [HttpPost]
+        public IActionResult SignUp(string email, string password)
+        {
+            return RedirectToAction("Home", "Home");
         }
 
         public IActionResult AdminPage()
@@ -49,18 +53,5 @@ namespace JewelleryStoreManagementSystem.Controllers
         {
             return View();
         }
-
-        //private readonly ILogger<HomeController> _logger;
-
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
     }
 }
