@@ -17,7 +17,12 @@ namespace JewelleryStoreManagementSystem.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Products()
+        {
+            return View();
+        }
+
+        public IActionResult ShoppingCart()
         {
             return View();
         }
