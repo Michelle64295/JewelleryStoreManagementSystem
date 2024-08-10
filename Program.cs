@@ -1,6 +1,7 @@
 using JewelleryStoreManagementSystem.Data;
 using JewelleryStoreManagementSystem.Data.Models;
 using JewelleryStoreManagementSystem.Data.Repositories;
+using JewelleryStoreManagementSystem.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,9 +18,10 @@ builder.Services.AddDbContext<JewelleryStoreManagementSystemContext>(options =>
 });
 
 builder.Services.AddScoped<CustomerRepository>();
-builder.Services.AddScoped<OrderItem>();
-builder.Services.AddScoped<Order>();
-builder.Services.AddScoped<Product>();
+builder.Services.AddScoped<OrderItemRepository>();
+builder.Services.AddScoped<OrderRepository>();
+builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<CustomerService>();
 
 var app = builder.Build();
 

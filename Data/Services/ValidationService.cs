@@ -21,5 +21,22 @@ namespace JewelleryStoreManagementSystem.Data.Services
             string validPhone = @"^04[0-9]{8}$";
             return Regex.IsMatch(phone, validPhone);
         }
+
+        public static bool IsValidFullName(this string fullName)
+        {
+            string validFullName = @"^[A-Z][a-zA-Z]*\s[A-Z][a-zA-Z]*$";
+            return Regex.IsMatch(fullName, validFullName);
+        }
+
+        public static bool IsValidString(this string input)
+        {
+            string validInput = @"^[A-Za-z\s]+$";
+            return Regex.IsMatch(input, validInput);
+        }
+
+        public static bool IsValidInteger(this string input)
+        {
+            return int.TryParse(input, out _);
+        }
     }
 }
