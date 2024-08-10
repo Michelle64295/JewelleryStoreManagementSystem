@@ -4,3 +4,56 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>Home Page.</p>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/customerhome.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <input type="radio" name="img-gallery" id="img1" checked >
+        <input type="radio" name="img-gallery" id="img2" >
+        <input type="radio" name="img-gallery" id="img3" >
+        <input type="radio" name="img-gallery" id="img4" >
+        <input type="radio" name="img-gallery" id="img5" >
+    </div>
+
+    <div class="selected-image">
+        <img src="~/images/carousel-img-1.png" alt="Jewellery Image 1">
+        <img src="~/images/carousel-img-2.png" alt="Jewellery Image 2">
+        <img src="~/images/carousel-img-3.png" alt="Jewellery Image 3">
+        <img src="~/images/carousel-img-4.png" alt="Jewellery Image 4">
+        <img src="~/images/carousel-img-5.png" alt="Jewellery Image 5">
+    </div>
+
+    <div class="bottom-gallery">
+        <label for="img1">
+            <img src="~/images/carousel-img-1.png" alt="Jewellery Image 1">
+        </label>
+
+        <label for="img2">
+            <img src="~/images/carousel-img-2.png" alt="Jewellery Image 2">
+        </label>
+
+        <label for="img3">
+            <img src="~/images/carousel-img-3.png" alt="Jewellery Image 3">
+        </label>
+
+        <label for="img4">
+            <img src="~/images/carousel-img-4.png" alt="Jewellery Image 4">
+        </label>
+
+        <label for="img5">
+            <img src="~/images/carousel-img-5.png" alt="Jewellery Image 5">
+        </label>
+    </div>
+
+</body>
+</html>

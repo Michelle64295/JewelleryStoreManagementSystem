@@ -34,8 +34,8 @@
                 <div id="login-content" class="form">
                     <form asp-action="Login" method="post">
 
-                        <input placeholder="Enter your email" type="email" id="email" required>
-                        <input placeholder="Enter your password" type="password" id="password" required>
+                        <input placeholder="Enter your email" type="email" id="email" name="email" required>
+                        <input placeholder="Enter your password" type="password" id="password" name="password" required>
 
                         <button type="submit">Login</button>
 
@@ -55,10 +55,10 @@
                 <div id="signup-content" class="form">
                     <form asp-action="Signup" method="post">
 
-                        <input placeholder="Enter your full name" type="text" id="fullname" required pattern="[A-Za-z\s]+" title="Full name must only contain characters and spaces">
+                        <input placeholder="Enter your full name" type="text" id="fullname" required >
                         <input placeholder="Enter your email" type="email" id="email" required>
-                        <input placeholder="Enter your street number" type="number" id="street-number" required title="Street number must only contain numbers">
-                        <input placeholder="Enter your street" type="text" id="street" required pattern="[A-Za-z\s]+" title="Street name must only contain characters and spaces">
+                        <input placeholder="Enter your street number" type="number" id="street-number" required >
+                        <input placeholder="Enter your street" type="text" id="street" required >
                         <input placeholder="Enter your city" type="text" id="city" required>
                         <select id="state" required>
                             <option value="" diabled selected>Enter your state</option>
@@ -71,7 +71,7 @@
                             <option value="SA">SA</option>
                             <option value="WA">WA</option>
                         </select>
-                        <input placeholder="Enter your phone number" type="tel" id="phone" required pattern="\d{10}" title="Phone number must only contain numbers and must be 10 digits long">
+                        <input placeholder="Enter your phone number" type="tel" id="phone" required >
                         <input placeholder="Enter a password" type="text" id="password" required>
 
                         <button type="submit">Sign up</button>

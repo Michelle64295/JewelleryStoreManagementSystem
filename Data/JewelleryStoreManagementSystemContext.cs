@@ -5,13 +5,10 @@ namespace JewelleryStoreManagementSystem.Data
 {
     public class JewelleryStoreManagementSystemContext : DbContext
     {
-        public DbSet<Admin> Admins { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Review> Reviews { get; set; }
         public string DbPath { get; }
 
         public JewelleryStoreManagementSystemContext(DbContextOptions<JewelleryStoreManagementSystemContext> options) : base(options)

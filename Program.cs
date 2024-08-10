@@ -16,13 +16,10 @@ builder.Services.AddDbContext<JewelleryStoreManagementSystemContext>(options =>
     options.UseSqlite($"Data Source={dbPath}");
 });
 
-builder.Services.AddScoped<AdminRepository>();
 builder.Services.AddScoped<CustomerRepository>();
-builder.Services.AddScoped<InventoryRepository>();
 builder.Services.AddScoped<OrderItem>();
 builder.Services.AddScoped<Order>();
 builder.Services.AddScoped<Product>();
-builder.Services.AddScoped<Review>();
 
 var app = builder.Build();
 

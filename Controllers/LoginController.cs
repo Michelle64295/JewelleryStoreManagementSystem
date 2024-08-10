@@ -5,12 +5,10 @@ namespace JewelleryStoreManagementSystem.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly AdminRepository _adminRepository;
         private readonly CustomerRepository _customerRepository;
 
-        public LoginController(AdminRepository adminRepository, CustomerRepository customerRepository)
+        public LoginController(CustomerRepository customerRepository)
         {
-            _adminRepository = adminRepository;
             _customerRepository = customerRepository;
         }
 
@@ -23,10 +21,6 @@ namespace JewelleryStoreManagementSystem.Controllers
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
-            if (_adminRepository.IsValidAdminCredentials(email, password))
-            {
-                return View("AdminPage");
-            }
             if (_customerRepository.IsValidCustomerCredentials(email, password))
             {
                 return RedirectToAction("Home", "Home");
