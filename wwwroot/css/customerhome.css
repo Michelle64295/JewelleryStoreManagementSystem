@@ -3,8 +3,7 @@ body {
     padding: 0;
     display: flex;
     height: 100vh;
-    overflow: hidden;
-    background-color: #9b7d61;
+    background-color: #e9e3d8;
 }
 
 input[type="radio"] {
@@ -19,25 +18,29 @@ input[type="radio"] {
 
 .container {
     display: flex;
-    position: absolute;
-    width: 62%;
+    position: relative;
+    width: 45%;
     left: 0;
     top: 0;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    box-sizing: border-box;
+    margin-left: 70px;
+    margin-right: 100px;
 }
 
 .selected-image {
-    width: 100%;
-    overflow: hidden;
+    width: 115%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    /*position: relative;*/
+    margin-top: 0px;
 }
 
 .selected-image img {
-    width: 100%;
+    width: 120%;
     height: auto;
     display: none;
 }
@@ -53,10 +56,8 @@ input[type="radio"] {
 .bottom-gallery {
     display: flex;
     margin-top: 10px;
-    gap: 10px;
-    width: 100%;
-    left: 0;
-    box-sizing: border-box;
+    margin-left: 0px;
+    gap: 15px;
 }
 
 .bottom-gallery label {
@@ -64,7 +65,7 @@ input[type="radio"] {
 }
 
 .bottom-gallery img {
-    width: 102px;
+    width: 80px;
     height: 100px;
     object-fit: cover;
     border: 2px solid transparent;
@@ -76,14 +77,46 @@ input[type="radio"] {
 #img4:checked ~ .bottom-gallery label[for="img4"] img, 
 #img5:checked ~ .bottom-gallery label[for="img5"] img {
     border-color: white;
-} 
+}
 
 .text-container {
-    width: 50%;
+    width: 55%;
     padding: 40px;
     box-sizing: border-box;
-    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: auto;
+}
+
+.text-container p {
+    margin: 0;
+    color: #9b7d61;
+}
+
+.button-container {
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container .button {
+    background-color: #9b7d61;
+    color: #e9e3d8;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+    display: inline-block;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+}
+
+.button-container .button:hover {
+    background-color: #817060;
 }

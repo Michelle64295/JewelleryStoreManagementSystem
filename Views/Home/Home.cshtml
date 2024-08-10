@@ -17,9 +17,9 @@
     <div class="main-container">
 
         <div class="container">
-            <input type="radio" name="img-gallery" id="img1">
+            <input type="radio" name="img-gallery" id="img1" checked>
             <input type="radio" name="img-gallery" id="img2">
-            <input type="radio" name="img-gallery" id="img3" checked>
+            <input type="radio" name="img-gallery" id="img3">
             <input type="radio" name="img-gallery" id="img4">
             <input type="radio" name="img-gallery" id="img5">
 
@@ -55,10 +55,17 @@
         </div>
 
         <div class="text-container">
-            <p>Welcome to Celestia!<br></p>
-            <p>Discover our collection of timeless jewellery pieces, crafted with passion and inspired by the beauty of the world around us. 
-               Whether you’re searching for a perfect gift or simply indulging in something special, 
-               we can offer you the perfect piece for every occassion.</p>
+            <p>Welcome to Celestia!</p>
+            <p>
+                Discover our collection of timeless jewellery pieces, crafted with passion and inspired by the beauty of the world around us.
+                Whether you’re searching for a perfect gift or simply indulging in something special,
+                we can offer you the perfect piece for every occassion.
+            </p>
+
+            <div class="button-container">
+                <a href="@Url.Action("Products", "Home")" class="button">Shop Products</a>
+                <a href="@Url.Action("ShoppingCart", "Home")" class="button">View Shopping Cart</a>
+            </div>
         </div>
 
     </div>
