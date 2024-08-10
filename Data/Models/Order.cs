@@ -1,4 +1,5 @@
-﻿namespace JewelleryStoreManagementSystem.Data.Models
+﻿#nullable enable
+namespace JewelleryStoreManagementSystem.Data.Models
 {
     public class Order
     {
