@@ -22,7 +22,7 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
             return GetAllCustomers().Any(c => c.Email == email && c.Password == password);
         }
 
-        public Customer GetCustomerByEmail(string email)
+        public Customer? GetCustomerByEmail(string email)
         {
             return _context.Customers.SingleOrDefault(c => c.Email == email);
         }
