@@ -6,111 +6,75 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    @* <link rel="stylesheet" href="~/JewelleryStoreManagementSystem.styles.css" asp-append-version="true" /> *@
+    <link rel="stylesheet" href="~/css/signin.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
-<body class="no-scroll" style="background-color: #e9e3d8;">
+<body style="background-color: #e9e3d8;">
 
-    <div class="signin-page">
+    <div class="container">
 
         <div class="image">
-            <img src="~/images/LoginPage.png" alt="Jewellery" >
+            <img src="~/images/LoginPage.png" alt="Jewellery" class="jewellery-image" >
         </div>
 
-        <div class="login-container">
-            <input type="radio" name="tab" id="login" checked>
-            <input type="radio" name="tab" id="signup">
+        <div class="form-container">
+            <input type="radio" name="tab" id="login-tab" checked>
+            <input type="radio" name="tab" id="signup-tab">
 
             <div class="tabs">
-                <label for="login" class="label">Login</label>
-                <label for="signup" class="label">Sign up</label>
+                <label for="login-tab" class="tab-label">Login</label>
+                <label for="signup-tab" class="tab-label">Sign up</label>
             </div>
 
             <div class="content">
-                <div class="login-content">
+
+                <div id="login-content" class="form">
                     <form asp-action="Login" method="post">
 
-                        <div>
-                            <input placeholder="Enter your email" type="text" id="email" name="email" />
-                        </div>
+                        <input placeholder="Enter your email" type="email" id="email" required>
+                        <input placeholder="Enter your password" type="password" id="password" required>
 
-                        <div>
-                            <input placeholder="Enter your password"  type="password" id="password" name="password" />
-                        </div>
+                        <button type="submit">Login</button>
 
-                        <div>
-                            <input type="submit" value="Login" />
-                        </div>
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <div class="error-message">
+                                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                {
+                                    <p>@error.ErrorMessage</p>
+                                }
+                            </div>
+                        }
 
                     </form>
-
-                    @if (!ViewData.ModelState.IsValid)
-                    {
-                        <div class="error-message">
-                            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-                            {
-                                <p>@error.ErrorMessage</p>
-                            }
-                        </div>
-                    }
                 </div>
 
-                <div class="signup-content">
+                <div id="signup-content" class="form">
                     <form asp-action="Signup" method="post">
 
-                        <div>
-                            <input placeholder="Enter your full name"  type="text" id="full-name" name="full-name" />
-                        </div>
+                        <input placeholder="Enter your full name" type="text" id="fullname" required pattern="[A-Za-z\s]+" title="Full name must only contain characters and spaces">
+                        <input placeholder="Enter your email" type="email" id="email" required>
+                        <input placeholder="Enter your street number" type="number" id="street-number" required title="Street number must only contain numbers">
+                        <input placeholder="Enter your street" type="text" id="street" required pattern="[A-Za-z\s]+" title="Street name must only contain characters and spaces">
+                        <input placeholder="Enter your city" type="text" id="city" required>
+                        <select id="state" required>
+                            <option value="" diabled selected>Enter your state</option>
+                            <option value="NSW">NSW</option>
+                            <option value="QLD">QLD</option>
+                            <option value="VIC">VIC</option>
+                            <option value="ACT">ACT</option>
+                            <option value="TAS">TAS</option>
+                            <option value="NT">NT</option>
+                            <option value="SA">SA</option>
+                            <option value="WA">WA</option>
+                        </select>
+                        <input placeholder="Enter your phone number" type="tel" id="phone" required pattern="\d{10}" title="Phone number must only contain numbers and must be 10 digits long">
+                        <input placeholder="Enter a password" type="text" id="password" required>
 
-                        <div>
-                            <input placeholder="Enter your email" type="text" id="email" name="email" />
-                        </div>
-
-                        <div class="street-container">
-                            <div>
-                                <input placeholder="Enter your street number" type="text" id="street-number" name="street-number" />
-                            </div>
-
-                            <div>
-                                <input placeholder="Enter your street" type="text" id="street" name="street" />
-                            </div>
-                        </div>
-
-                        <div>
-                            <input placeholder="Enter your city" type="text" id="city" name="city" />
-                        </div>
-
-                        <div>
-                            <select id="state" name="state">
-                                <option value="" disabled selected>Select your state</option>
-                                <option value="NSW">NSW</option>
-                                <option value="NT">NT</option>
-                                <option value="QLD">QLD</option>
-                                <option value="SA">SA</option>
-                                <option value="TAS">TAS</option>
-                                <option value="VIC">VIC</option>
-                                <option value="WA">WA</option>
-                                <option value="ACT">ACT</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <input placeholder="Enter your phone number" type="text" id="phone-number" name="phone-number" />
-                        </div>
-
-                        <div>
-                            <input placeholder="Enter your password"  type="text" id="password" name="password" />
-                        </div>
-
-                        <div>
-                            <input type="submit" value="Sign up" />
-                        </div>
+                        <button type="submit">Sign up</button>
 
                     </form>
                 </div>
@@ -120,22 +84,6 @@
         </div>
 
     </div>
-
-        @* <div>
-            <label for="id">Email:</label>
-            <input type="text" id="id" name="id" required />
-        </div>
-
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required />
-        </div> *@
-
-    @* </form> *@
-
-    @* <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script> *@
 </body>
 
 </html>
