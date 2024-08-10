@@ -6,7 +6,7 @@ namespace JewelleryStoreManagementSystem.Data.Services
     {
         public static bool IsValidPassword(this string password)
         {
-            string validPassword = @"^[a-zA-Z0-9!@#$%^&*()]{8,}$";
+            string validPassword = @"^[a-zA-Z0-9!@#$%^&*()]{5,}$";
             return Regex.IsMatch(password, validPassword);
         }
 
