@@ -1,0 +1,159 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1100px;
+    height: 700px;
+    margin: auto;
+}
+
+.image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image img {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.form-container {
+    flex: 1;
+    background-color: white;
+    padding: 40px 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 530px;
+    width: 100%;
+    height: 100%;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.tab-label {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 40px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #cec3b9;
+    transition: border-bottom 0.1s ease, color 0.1s ease;
+}
+
+#login-tab:checked ~ .tabs label[for="login-tab"],
+#signup-tab:checked ~ .tabs label[for="signup-tab"] {
+    border-bottom: 2px solid #9b7d61;
+    color: #9b7d61;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    display: none;
+}
+
+#login-tab:checked ~ .content #login-content, 
+#signup-tab:checked ~ .content #signup-content {
+    display: block;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 2px solid #cec3b9;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    color: black;
+    box-sizing: border-box;
+}
+
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 2px solid #cec3b9;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    color: black;
+    box-sizing: border-box;
+    background-color: none;
+    appearance: none;
+}
+
+form select option[value=""] {
+    display: none;
+}
+
+form select:focus {
+    outline: none;
+}
+
+form input:focus {
+    outline: none;
+}
+
+form input::placeholder {
+    color: #cec3b9;
+}
+
+form button {
+    padding: 12px;
+    margin: 30px auto 0;
+    display: block;
+    border: none;
+    background-color: #9b7d61;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #e9e3d8;
+    cursor: pointer;
+    width: 50%;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #817060;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 15px;
+}
