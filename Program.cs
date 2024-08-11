@@ -1,5 +1,4 @@
 using JewelleryStoreManagementSystem.Data;
-using JewelleryStoreManagementSystem.Data.Models;
 using JewelleryStoreManagementSystem.Data.Repositories;
 using JewelleryStoreManagementSystem.Data.Services;
 using Microsoft.EntityFrameworkCore;
