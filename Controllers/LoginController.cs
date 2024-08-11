@@ -1,8 +1,6 @@
 ﻿using JewelleryStoreManagementSystem.Data.Repositories;
 using JewelleryStoreManagementSystem.Data.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
-using System.Xml.Linq;
 
 namespace JewelleryStoreManagementSystem.Controllers
 {
