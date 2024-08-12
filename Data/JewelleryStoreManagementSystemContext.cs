@@ -1,6 +1,7 @@
 ﻿using JewelleryStoreManagementSystem.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
+#nullable enable
 namespace JewelleryStoreManagementSystem.Data
 {
     public class JewelleryStoreManagementSystemContext : DbContext

@@ -1,4 +1,5 @@
-﻿namespace JewelleryStoreManagementSystem.Data.Repositories
+﻿#nullable enable
+namespace JewelleryStoreManagementSystem.Data.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {

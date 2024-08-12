@@ -1,5 +1,6 @@
 ﻿using JewelleryStoreManagementSystem.Data.Models;
 
+#nullable enable
 namespace JewelleryStoreManagementSystem.Data.Repositories
 {
     public class OrderRepository : Repository<Order>

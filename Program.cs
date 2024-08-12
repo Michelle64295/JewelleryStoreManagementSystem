@@ -1,3 +1,4 @@
+#nullable enable
 using JewelleryStoreManagementSystem.Data;
 using JewelleryStoreManagementSystem.Data.Repositories;
 using JewelleryStoreManagementSystem.Data.Services;

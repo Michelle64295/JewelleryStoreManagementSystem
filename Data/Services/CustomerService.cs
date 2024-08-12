@@ -1,6 +1,7 @@
 ﻿using JewelleryStoreManagementSystem.Data.Repositories;
 using JewelleryStoreManagementSystem.Data.Models;
 
+#nullable enable
 namespace JewelleryStoreManagementSystem.Data.Services
 {
     public class CustomerService

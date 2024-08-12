@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
+#nullable enable
 namespace JewelleryStoreManagementSystem.Data.Services
 {
     public static class ValidationService
