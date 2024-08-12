@@ -5,7 +5,7 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
 {
     public class CustomerRepository : Repository<Customer>
     {
-        private readonly JewelleryStoreManagementSystemContext _context;
+        private new readonly JewelleryStoreManagementSystemContext _context;
 
         public CustomerRepository(JewelleryStoreManagementSystemContext context) : base(context)
         {
