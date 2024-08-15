@@ -12,7 +12,7 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
             _context = context;
         }
 
-        public IEnumerable<Order> GetAllOrder()
+        public IEnumerable<Order> GetAllOrders()
         {
             return _context.Orders.ToList();
         }
