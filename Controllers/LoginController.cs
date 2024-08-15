@@ -80,10 +80,5 @@ namespace JewelleryStoreManagementSystem.Controllers
                 return RedirectToAction("Home", "Home");
             }
         }
-
-        public IActionResult CustomerPage()
-        {
-            return View();
-        }
     }
 }

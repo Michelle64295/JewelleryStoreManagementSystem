@@ -14,22 +14,6 @@ namespace JewelleryStoreManagementSystem.Controllers
             _productRepository = productRepository;
         }
 
-        public IActionResult CustomerPage()
-        {
-            return View();
-        }
-
-        public IActionResult Products()
-        {
-            var products = _productRepository.GetAllProducts();
-            return View(products);
-        }
-
-        public IActionResult ShoppingCart()
-        {
-            return View();
-        }
-
         public IActionResult Home()
         {
             return View();
