@@ -83,5 +83,11 @@ namespace JewelleryStoreManagementSystem.Controllers
                 return RedirectToAction("Home", "Home");
             }
         }
+
+        [HttpGet]
+        public IActionResult LogOut()
+        {
+            return View("Login");
+        }
     }
 }
