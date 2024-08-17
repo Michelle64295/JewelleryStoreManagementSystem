@@ -49,15 +49,15 @@
 
     <ul style="background-color: #9b7d61;">
         <li><a href="@Url.Action("Home", "Home")"><img src="~/images/Logo.png" alt="Logo" class="logo"></a></li>
-        <li style="float:right"><a href="@Url.Action("Order", "Home")">Shopping Cart</a></li>
-        <li style="float:right"><a href="@Url.Action("Products", "Home")">Products</a></li>
+        <li style="float:right"><a href="@Url.Action("Order", "Order")">Shopping Cart</a></li>
+        <li style="float:right"><a href="@Url.Action("Products", "Products")">Products</a></li>
     </ul>
 
     <div class="product-grid">
         @foreach (var product in Model)
         {
             <div class="product-item">
-                <a style="text-decoration: none" href="@Url.Action("ProductDetails", "Home", new { id = product.ProductId })">
+                <a style="text-decoration: none" href="@Url.Action("ProductDetails", "ProductDetails", new { id = product.ProductId })">
                     <img src="@Url.Content(product.ImagePath)" alt="@product.Name" class="product-image">
                     <div class="product-details">
                         <p style="color: #9b7d61">@product.Name</p>

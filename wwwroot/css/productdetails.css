@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    background-color: #e9e3d8;
+}
+
+ul {
+    list-style-type: none;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    display: inline;
+}
+
+ul .logo {
+    width: 75px;
+    height: auto;
+    padding: 8px 10px;
+}
+
+li a {
+    text-decoration: none;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    color: #e9e3d8;
+    padding: 8px 10px;
+    margin-top: 10px;
+}
+
+li a:hover {
+    text-decoration: underline;
+    color: #e9e3d8;
+}
+
+.main-container {
+    display: inline-flex;
+}
+
+.product-image {
+    margin-top: 20px;
+    width: 550px;
+}
+
+    .product-image img {
+        width: 100%;
+    }
+
+.product-details {
+    margin-left: 20px;
+    margin-top: 40px;
+    width: 720px;
+}
+
+h4 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #9b7d61;
+}
+
+p {
+    padding-top: 20px;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    color: #9b7d61;
+}
+
+.order-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin-top: 50px;
+}
+
+button {
+    padding: 12px;
+    margin: 30px auto 0;
+    display: block;
+    border: none;
+    background-color: #9b7d61;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #e9e3d8;
+    cursor: pointer;
+    width: 200px;
+}
+
+label {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 18px;
+    color: #9b7d61;
+}
+
+#quantity {
+    width: 80px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 2px solid #9b7d61;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    color: #9b7d61;
+    box-sizing: border-box;
+    background-color: none;
+}
+
+    #quantity:focus {
+        outline: none;
+    }

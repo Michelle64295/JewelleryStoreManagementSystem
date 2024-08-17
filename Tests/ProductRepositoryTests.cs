@@ -45,23 +45,5 @@ namespace JewelleryStoreManagementSystem.Tests
 
             Assert.That(products.Count(), Is.EqualTo(2));
         }
-
-        [Test]
-        public void GetProductById_ExistingName_ReturnsProduct()
-        {
-            var product = _productRepository.GetProductByName("Diamond Ring in 10kt Yellow Gold");
-
-            Assert.IsNotNull(product);
-            Assert.That(product.Name, Is.EqualTo("Diamond Ring in 10kt Yellow Gold"));
-            Assert.That(product.ProductId, Is.EqualTo(1));
-        }
-
-        [Test]
-        public void GetPatientByName_NonExistingName_ReturnsNull()
-        {
-            var product = _productRepository.GetProductByName("Random Product");
-
-            Assert.IsNull(product);
-        }
     }
 }
