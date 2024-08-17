@@ -234,7 +234,7 @@ input[type="radio"] {
     margin: 10px;
     display: inline-block;
     text-decoration: none;
-    width: calc(100% - 20px);  Adjust width for padding 
+    width: calc(100% - 20px);  
     max-width: 200px;
     text-align: center;
     font-size: 1em;

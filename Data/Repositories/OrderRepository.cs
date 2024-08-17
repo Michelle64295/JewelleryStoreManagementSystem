@@ -36,7 +36,7 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
             _context.SaveChanges();
         }
 
-        public void UpdateOrder (Order order)
+        public void UpdateOrder(Order order)
         {
             _context.Orders.Update(order);
             _context.SaveChanges();
@@ -44,7 +44,15 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
 
         public Order? GetOrderById(int orderId)
         {
-            return _context.Orders.Include(o => o.OrderItems).ThenInclude(o => o.Product).SingleOrDefault(o => o.OrderId == orderId);
+            Order? order = _context.Orders.Include(o => o.OrderItems).ThenInclude(o => o.Product).SingleOrDefault(o => o.OrderId == orderId);
+            if (order == null)
+            {
+                throw new NullReferenceException();
+            }
+            else
+            {
+                return order;
+            }
         }
     }
 }

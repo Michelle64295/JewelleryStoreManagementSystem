@@ -1,4 +1,5 @@
-﻿using JewelleryStoreManagementSystem.Data.Models;
+﻿using Castle.Core.Resource;
+using JewelleryStoreManagementSystem.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 #nullable enable
@@ -23,9 +24,17 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
             return GetAllCustomers().Any(c => c.Email == email && c.Password == password);
         }
 
-        public Customer? GetCustomerByEmail(string email)
+        public Customer GetCustomerByEmail(string email)
         {
-            return _context.Customers.SingleOrDefault(c => c.Email == email);
+            Customer? customer = _context.Customers.SingleOrDefault(c => c.Email == email);
+            if (customer == null)
+            {
+                throw new NullReferenceException();
+            }
+            else
+            {
+                return customer;
+            }
         }
 
         public Customer GetCustomerById(int? id)
