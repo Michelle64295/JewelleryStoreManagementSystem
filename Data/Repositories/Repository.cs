@@ -23,5 +23,10 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
         {
             _context.SaveChanges();
         }
+
+        public void Remove(T entity)
+        {
+            _context.Set<T>().Remove(entity); 
+        }
     }
 }

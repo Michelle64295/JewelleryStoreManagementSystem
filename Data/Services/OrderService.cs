@@ -1,6 +1,7 @@
 ﻿using JewelleryStoreManagementSystem.Data.Models;
 using JewelleryStoreManagementSystem.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
+#nullable enable
 
 namespace JewelleryStoreManagementSystem.Data.Services
 {
@@ -78,6 +79,20 @@ namespace JewelleryStoreManagementSystem.Data.Services
             {
                 Order existingOrder = _orderRepository.GetOrderByCustomerId(customer.CustomerId);
                 return existingOrder;
+            }
+        }
+
+        public void DeleteOrder(int customerId) 
+        {
+            Customer customer = _customerRepository.GetCustomerById(customerId);
+            if (customer.Orders.Count > 0)
+            {
+                List<OrderItem> orderItems = _orderItemRepository.GetAllOrderItemsInOrder(customer.Orders.First().OrderId);
+                foreach (OrderItem item in orderItems) 
+                {
+                    _orderItemRepository.Remove(item);
+                    _orderItemRepository.SaveChanges();
+                }
             }
         }
     }

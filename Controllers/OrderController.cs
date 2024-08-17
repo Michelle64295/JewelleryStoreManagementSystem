@@ -16,9 +16,8 @@ namespace JewelleryStoreManagementSystem.Controllers
         [HttpPost]
         public IActionResult Order(int quantity, int productId)
         {
-            //int customerId = Convert.ToInt32(TempData["CustomerId"]);
             int customerId = (int)TempData["CustomerId"];
-            var order = _orderService.GetOrder(quantity, productId, customerId);
+            Order order = _orderService.GetOrder(quantity, productId, customerId);
             TempData.Keep("CustomerId");
             return View(order);
         }
@@ -26,11 +25,20 @@ namespace JewelleryStoreManagementSystem.Controllers
         [HttpGet]
         public IActionResult Order()
         {
-            //int customerId = Convert.ToInt32(TempData["CustomerId"]);
             int customerId = (int)TempData["CustomerId"];
             Order order = _orderService.GetOrder(customerId);
             TempData.Keep("CustomerId");
             return View(order);
+        }
+
+        [HttpPost]
+        public IActionResult CompleteOrder()
+        {
+            int customerId = (int)TempData["CustomerId"];
+            _orderService.DeleteOrder(customerId);
+            Order order = _orderService.GetOrder(customerId);
+            TempData.Keep("CustomerId");
+            return RedirectToAction("Order", order);
         }
     }
 }
