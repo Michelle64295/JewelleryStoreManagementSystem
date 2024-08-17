@@ -24,8 +24,7 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
 
         public OrderItem? GetOrderItemByOrderIdAndProductId(int orderId, int productId)
         {
-            return _context.OrderItems
-                           .FirstOrDefault(o => o.OrderId == orderId && o.ProductId == productId);
+            return _context.OrderItems.FirstOrDefault(o => o.OrderId == orderId && o.ProductId == productId);
         }
     }
 }
