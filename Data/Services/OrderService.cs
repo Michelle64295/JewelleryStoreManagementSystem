@@ -21,16 +21,28 @@ namespace JewelleryStoreManagementSystem.Data.Services
 
         public void AddOrderItem(int quantity, int orderId, int productId)
         {
-            Product product = _productRepository.GetProductById(productId);
-            OrderItem orderItem = new OrderItem()
-            {
-                Quantity = quantity,
-                OrderId = orderId,
-                ProductId = productId, 
-                Product = product
-            };
+            OrderItem existingOrderItem = _orderItemRepository.GetOrderItemByOrderIdAndProductId(orderId, productId);
 
-            _orderItemRepository.Add(orderItem);
+            if (existingOrderItem != null)
+            {
+                existingOrderItem.Quantity += quantity;
+                _orderItemRepository.Update(existingOrderItem);
+            }
+            else
+            {
+                Product product = _productRepository.GetProductById(productId);
+
+                OrderItem orderItem = new OrderItem()
+                {
+                    Quantity = quantity,
+                    OrderId = orderId,
+                    ProductId = productId,
+                    Product = product
+                };
+
+                _orderItemRepository.Add(orderItem);
+            }
+
             _orderItemRepository.SaveChanges();
         }
 

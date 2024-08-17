@@ -1,3 +1,7 @@
+body {
+    background-color: #e9e3d8;
+}
+
 h2 {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -5,11 +9,6 @@ h2 {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     color: #9b7d61;
-}
-
-.product-image {
-    width: 200px;
-    height: auto;
 }
 
 form button {
@@ -63,4 +62,61 @@ li a {
 li a:hover {
     text-decoration: underline;
     color: #e9e3d8;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    max-width: 1000px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.product-image {
+    flex: 1;
+    min-width: 150px;
+    max-width: 200px;
+    margin-right: 60px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.product-details h4 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #9b7d61;
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+.product-details h5 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #9b7d61;
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+.product-details h6 {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    color: #9b7d61;
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+.product-details h7 {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    text-decoration: underline;
+    color: #9b7d61;
+    padding-top: 5px;
+    margin-top: 5px;
+    cursor: pointer;
 }
