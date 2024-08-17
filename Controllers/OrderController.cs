@@ -2,6 +2,8 @@
 using JewelleryStoreManagementSystem.Data.Services;
 using JewelleryStoreManagementSystem.Data.Models;
 using JewelleryStoreManagementSystem.Data.Repositories;
+using Castle.Core.Resource;
+#nullable enable
 
 namespace JewelleryStoreManagementSystem.Controllers
 {
@@ -22,43 +24,82 @@ namespace JewelleryStoreManagementSystem.Controllers
         [HttpPost]
         public IActionResult Order(int quantity, int productId)
         {
-            int customerId = (int)TempData["CustomerId"];
-            Order order = _orderService.GetOrder(quantity, productId, customerId);
-            TempData.Keep("CustomerId");
-            return View(order);
+            int? customerId = (int?)TempData["CustomerId"];
+            if (customerId != null)
+            {
+                int id = (int)customerId;
+                Order order = _orderService.GetOrder(quantity, productId, id);
+                TempData.Keep("CustomerId");
+                return View(order);
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
         }
 
         [HttpGet]
         public IActionResult Order()
         {
-            int customerId = (int)TempData["CustomerId"];
-            Order order = _orderService.GetOrder(customerId);
-            TempData.Keep("CustomerId");
-            return View(order);
+            int? customerId = (int?)TempData["CustomerId"];
+            if (customerId != null)
+            {
+                int id = (int)customerId;
+                Order order = _orderService.GetOrder(id);
+                TempData.Keep("CustomerId");
+                return View(order);
+            }
+            else
+            {
+                throw new NullReferenceException(); 
+            }
         }
 
         [HttpPost]
         public IActionResult CompleteOrder()
         {
-            int customerId = (int)TempData["CustomerId"];
-            _orderService.DeleteOrderItems(customerId);
-            Order order = _orderService.GetOrder(customerId);
-            TempData.Keep("CustomerId");
-            return RedirectToAction("Order", order);
+            int? customerId = (int?)TempData["CustomerId"];
+            if (customerId != null)
+            {
+                int id = (int)customerId;
+                _orderService.DeleteOrderItems(id);
+                Order order = _orderService.GetOrder(id);
+                TempData.Keep("CustomerId");
+                return RedirectToAction("Order", order);
+            }
+            else
+            {
+                throw new NullReferenceException(); 
+            }
         }
 
         [HttpPost]
         public IActionResult Remove(string name)
         {
-            int customerId = (int)TempData["CustomerId"];
-            Order order = _orderService.GetOrder(customerId);
-            TempData.Keep("CustomerId");
+            int? customerId = (int?)TempData["CustomerId"];
+            if (customerId != null)
+            {
+                int id = (int)customerId;
+                Order order = _orderService.GetOrder(id);
+                TempData.Keep("CustomerId");
 
-            Product product = _productRepository.GetProductByName(name);
-            OrderItem orderItem = _orderItemRepository.GetOrderItemByOrderIdAndProductId(order.OrderId, product.ProductId);
+                Product product = _productRepository.GetProductByName(name);
+                OrderItem? orderItem = _orderItemRepository.GetOrderItemByOrderIdAndProductId(order.OrderId, product.ProductId);
 
-            _orderService.DeleteOrderItem(orderItem);
-            return RedirectToAction("Order", order);
+                if (orderItem != null) 
+                {
+                    _orderService.DeleteOrderItem(orderItem);
+                    return RedirectToAction("Order", order);
+                }
+                else
+                {
+                    throw new NullReferenceException(); 
+                }
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
         }
     }
 }

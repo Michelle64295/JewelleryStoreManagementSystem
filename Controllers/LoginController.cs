@@ -2,6 +2,7 @@
 using JewelleryStoreManagementSystem.Data.Repositories;
 using JewelleryStoreManagementSystem.Data.Services;
 using Microsoft.AspNetCore.Mvc;
+#nullable enable
 
 namespace JewelleryStoreManagementSystem.Controllers
 {

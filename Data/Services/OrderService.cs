@@ -50,7 +50,7 @@ namespace JewelleryStoreManagementSystem.Data.Services
         public Order GetOrder(int quantity, int productId, int customerId)
         {
             Customer customer = _customerRepository.GetCustomerById(customerId);
-            if (customer.Orders.Count == 0) 
+            if (customer.Orders != null && customer.Orders.Count == 0) 
             {
                 Order order = new Order
                 {
@@ -75,7 +75,7 @@ namespace JewelleryStoreManagementSystem.Data.Services
         public Order GetOrder(int customerId)
         {
             Customer customer = _customerRepository.GetCustomerById(customerId);
-            if (customer.Orders.Count == 0)
+            if (customer.Orders != null && customer.Orders.Count == 0)
             {
                 Order order = new Order
                 {
@@ -97,7 +97,7 @@ namespace JewelleryStoreManagementSystem.Data.Services
         public void DeleteOrderItems(int customerId) 
         {
             Customer customer = _customerRepository.GetCustomerById(customerId);
-            if (customer.Orders.Count > 0)
+            if (customer.Orders != null && customer.Orders.Count > 0)
             {
                 List<OrderItem> orderItems = _orderItemRepository.GetAllOrderItemsInOrder(customer.Orders.First().OrderId);
                 foreach (OrderItem item in orderItems) 

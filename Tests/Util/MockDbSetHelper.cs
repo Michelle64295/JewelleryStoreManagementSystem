@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Moq;
+#nullable enable
 
 namespace JewelleryStoreManagementSystem.Tests.Util
 {
