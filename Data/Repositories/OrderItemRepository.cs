@@ -16,5 +16,10 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
         {
             return _context.OrderItems.ToList();
         }
+
+        public List<OrderItem> GetAllOrderItemsInOrder(int orderId)
+        {
+            return _context.OrderItems.Where(oi => oi.OrderId == orderId).ToList();
+        }
     }
 }

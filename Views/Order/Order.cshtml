@@ -41,7 +41,7 @@
         }
         @* <p>Total: @(Model.OrderItems.Sum(s => decimal.Parse(s.Product.Price) * s.Quantity))</p> *@
 
-        <form asp-action="CompleteOrder" method="post">
+        <form asp-controller="Order" asp-action="CompleteOrder" method="post">
             <button type="submit">Complete Order</button>
         </form>
     }
