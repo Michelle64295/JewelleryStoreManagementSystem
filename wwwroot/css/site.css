@@ -9,7 +9,6 @@ ul {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: #9b7d61;
 }
 
 li {
@@ -35,34 +34,4 @@ li a {
 li a:hover {
     text-decoration: underline;
     color: #e9e3d8;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    padding: 16px;
-    margin-top: 20px;
-}
-
-.product-item {
-    width: 300px;
-    text-align: left;
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 18px;
-}
-
-.product-image {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.product-details p {
-    font-size: 16px;
-    margin-bottom: 3px;
-}
-
-.product-details {
-    padding-bottom: 10px;
 }

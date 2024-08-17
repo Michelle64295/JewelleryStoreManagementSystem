@@ -17,9 +17,9 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
             return _context.Products.ToList();
         }
 
-        public Product? GetProductByName(string name)
+        public Product? GetProductById(int id)
         {
-            return _context.Products.SingleOrDefault(c => c.Name == name);
+            return _context.Products.FirstOrDefault(c => c.ProductId == id);
         }
     }
 }

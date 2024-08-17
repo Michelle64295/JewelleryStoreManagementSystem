@@ -132,7 +132,7 @@ namespace JewelleryStoreManagementSystem.Migrations
             modelBuilder.Entity("JewelleryStoreManagementSystem.Data.Models.OrderItem", b =>
                 {
                     b.HasOne("JewelleryStoreManagementSystem.Data.Models.Order", "Order")
-                        .WithMany()
+                        .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -151,6 +151,11 @@ namespace JewelleryStoreManagementSystem.Migrations
             modelBuilder.Entity("JewelleryStoreManagementSystem.Data.Models.Customer", b =>
                 {
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("JewelleryStoreManagementSystem.Data.Models.Order", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 #pragma warning restore 612, 618
         }

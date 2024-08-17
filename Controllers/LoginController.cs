@@ -1,4 +1,5 @@
-﻿using JewelleryStoreManagementSystem.Data.Repositories;
+﻿using JewelleryStoreManagementSystem.Data.Models;
+using JewelleryStoreManagementSystem.Data.Repositories;
 using JewelleryStoreManagementSystem.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,6 +27,8 @@ namespace JewelleryStoreManagementSystem.Controllers
         {
             if (_customerRepository.IsValidCustomerCredentials(email, password))
             {
+                Customer customer = _customerRepository.GetCustomerByEmail(email);
+                TempData["CustomerId"] = customer.CustomerId;
                 return RedirectToAction("Home", "Home");
             }
             else
