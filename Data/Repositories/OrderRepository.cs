@@ -30,18 +30,6 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
             }
         }
 
-        public void AddOrder(Order order)
-        {
-            _context.Orders.Add(order);
-            _context.SaveChanges();
-        }
-
-        public void UpdateOrder(Order order)
-        {
-            _context.Orders.Update(order);
-            _context.SaveChanges();
-        }
-
         public Order? GetOrderById(int orderId)
         {
             Order? order = _context.Orders.Include(o => o.OrderItems).ThenInclude(o => o.Product).SingleOrDefault(o => o.OrderId == orderId);

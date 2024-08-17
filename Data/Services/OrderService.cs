@@ -22,7 +22,7 @@ namespace JewelleryStoreManagementSystem.Data.Services
 
         public void AddOrderItem(int quantity, int orderId, int productId)
         {
-            OrderItem existingOrderItem = _orderItemRepository.GetOrderItemByOrderIdAndProductId(orderId, productId);
+            OrderItem? existingOrderItem = _orderItemRepository.GetOrderItemByOrderIdAndProductId(orderId, productId);
 
             if (existingOrderItem != null)
             {
