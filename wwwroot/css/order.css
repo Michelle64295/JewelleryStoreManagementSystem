@@ -1,0 +1,32 @@
+h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    color: #9b7d61;
+}
+
+.product-image {
+    width: 200px;
+    height: auto;
+}
+
+form button {
+    padding: 12px;
+    margin: 50px auto 0;
+    border: none;
+    background-color: #9b7d61;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    color: #e9e3d8;
+    cursor: pointer;
+    width: 50%;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #817060;
+}

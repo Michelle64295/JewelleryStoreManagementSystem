@@ -1,36 +1,39 @@
 ﻿@model JewelleryStoreManagementSystem.Data.Models.Order
 
-@{
-    ViewData["Title"] = "Shopping Cart";
-}
+<h2>Shopping Cart</h2>
 
-<h1>Shopping Cart</h1>
-<p>Welcome to the Shopping Cart page.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/order.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
 
-@if (Model.OrderItems.Any())
+<body>
+
+@if (Model.OrderItems != null)
 {
-    <table>
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.OrderItems)
-            {
-                <tr>
-                    <td>@item.Product.Name</td>
-                    <td>@item.Quantity</td>
-                    <td>@item.Product.Price</td>
-                    <td>@(decimal.Parse(item.Product.Price) * item.Quantity)</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <p>Total: @(Model.OrderItems.Sum(s => decimal.Parse(s.Product.Price) * s.Quantity))</p>
+    @foreach (var item in Model.OrderItems)
+    {
+        <div class="main-container">
+            <img src="@Url.Content(item.Product.ImagePath)" alt="@item.Product.Name" class="product-image">
+
+            <div class="product-details-first-row">
+                <p>@item.Product.Name</p>
+                <p>@item.Product.Price</p>
+            </div>
+
+            <div class="product-details-second-row">
+                <p>@item.Quantity</p>
+            </div>
+
+        </div>
+    }
+    @* <p>Total: @(Model.OrderItems.Sum(s => decimal.Parse(s.Product.Price) * s.Quantity))</p> *@
 
     <form asp-action="CompleteOrder" method="post">
         <button type="submit">Complete Order</button>
@@ -40,3 +43,7 @@ else
 {
     <p>Your cart is empty.</p>
 }
+
+</body>
+
+</html>
