@@ -1,7 +1,5 @@
 ﻿@model JewelleryStoreManagementSystem.Data.Models.Order
 
-<h2>Shopping Cart</h2>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,35 +12,43 @@
 </head>
 
 <body>
+    <ul style="background-color: #9b7d61;">
+        <li><a href="@Url.Action("Home", "Home")"><img src="~/images/Logo.png" alt="Logo" class="logo"></a></li>
+        <li style="float:right"><a href="@Url.Action("Order", "Order")">Shopping Cart</a></li>
+        <li style="float:right"><a href="@Url.Action("Products", "Products")">Products</a></li>
+        <li style="float:right"><a href="@Url.Action("LogOut", "Login")">Logout</a></li>
+    </ul>
 
-@if (Model.OrderItems != null)
-{
-    @foreach (var item in Model.OrderItems)
+    <h2>Shopping Cart</h2>
+
+    @if (Model.OrderItems != null)
     {
-        <div class="main-container">
-            <img src="@Url.Content(item.Product.ImagePath)" alt="@item.Product.Name" class="product-image">
+        @foreach (var item in Model.OrderItems)
+        {
+            <div class="main-container">
+                <img src="@Url.Content(item.Product.ImagePath)" alt="@item.Product.Name" class="product-image">
 
-            <div class="product-details-first-row">
-                <p>@item.Product.Name</p>
-                <p>@item.Product.Price</p>
+                <div class="product-details-first-row">
+                    <p>@item.Product.Name</p>
+                    <p>@item.Product.Price</p>
+                </div>
+
+                <div class="product-details-second-row">
+                    <p>@item.Quantity</p>
+                </div>
+
             </div>
+        }
+        @* <p>Total: @(Model.OrderItems.Sum(s => decimal.Parse(s.Product.Price) * s.Quantity))</p> *@
 
-            <div class="product-details-second-row">
-                <p>@item.Quantity</p>
-            </div>
-
-        </div>
+        <form asp-action="CompleteOrder" method="post">
+            <button type="submit">Complete Order</button>
+        </form>
     }
-    @* <p>Total: @(Model.OrderItems.Sum(s => decimal.Parse(s.Product.Price) * s.Quantity))</p> *@
-
-    <form asp-action="CompleteOrder" method="post">
-        <button type="submit">Complete Order</button>
-    </form>
-}
-else
-{
-    <p>Your cart is empty.</p>
-}
+    else
+    {
+        <p>Your cart is empty.</p>
+    }
 
 </body>
 
