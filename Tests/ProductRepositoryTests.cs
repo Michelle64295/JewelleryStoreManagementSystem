@@ -23,8 +23,8 @@ namespace JewelleryStoreManagementSystem.Tests
             // Initialize mock data
             products = new List<Product>
             {
-                new Product { ProductId = 1, Description = "The sleek design is immaculately crafted in 10kt yellow gold", ImagePath = "'~/images/diamond-ring.png", Name = "Diamond Ring in 10kt Yellow Gold", Price = "$1,599" },
-                new Product { ProductId = 2, Description = "These exquisite gold earrings feature stunning blue details", ImagePath = "~/images/blue-earrings.png", Name = "Gold Earrings with Blue Details", Price = "$899" }
+                new Product { ProductId = 1, Description = "The sleek design is immaculately crafted in 10kt yellow gold", ImagePath = "'~/images/diamond-ring.png", Name = "Diamond Ring in 10kt Yellow Gold", Price = 1599 },
+                new Product { ProductId = 2, Description = "These exquisite gold earrings feature stunning blue details", ImagePath = "~/images/blue-earrings.png", Name = "Gold Earrings with Blue Details", Price = 899 }
             }.AsQueryable();
 
 
