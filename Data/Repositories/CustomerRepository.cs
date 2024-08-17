@@ -28,6 +28,11 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
             return _context.Customers.SingleOrDefault(c => c.Email == email);
         }
 
+        public Customer? GetCustomerById(int? id)
+        {
+            return _context.Customers.Include(c => c.Orders).SingleOrDefault(c => c.CustomerId == id);
+        }
+
         public List<string> GetAllCustomersByEmail()
         {
             return _context.Customers.Select(c => c.Email).ToList();
