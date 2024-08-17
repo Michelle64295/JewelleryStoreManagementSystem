@@ -20,11 +20,7 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
 
         public Order? GetOrderByCustomerId(int customerId)
         {
-            return _context.Orders
-                           .Include(o => o.OrderItems)
-                           .ThenInclude(oi => oi.Product)
-                           .Where(o => o.CustomerId == customerId)
-                           .FirstOrDefault();
+            return _context.Orders.Include(o => o.OrderItems).ThenInclude(oi => oi.Product).Where(o => o.CustomerId == customerId).FirstOrDefault();
         }
 
         public void AddOrder(Order order)
@@ -41,10 +37,7 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
 
         public Order? GetOrderById(int orderId)
         {
-            return _context.Orders
-                .Include(o => o.OrderItems)
-                .ThenInclude(o => o.Product)
-                .SingleOrDefault(o => o.OrderId == orderId);
+            return _context.Orders.Include(o => o.OrderItems).ThenInclude(o => o.Product).SingleOrDefault(o => o.OrderId == orderId);
         }
     }
 }
