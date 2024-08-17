@@ -1,0 +1,42 @@
+﻿@model JewelleryStoreManagementSystem.Data.Models.Order
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<h1>Shopping Cart</h1>
+<p>Welcome to the Shopping Cart page.</p>
+
+@if (Model.OrderItems.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderItems)
+            {
+                <tr>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Product.Price</td>
+                    <td>@(decimal.Parse(item.Product.Price) * item.Quantity)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>Total: @(Model.OrderItems.Sum(s => decimal.Parse(s.Product.Price) * s.Quantity))</p>
+
+    <form asp-action="CompleteOrder" method="post">
+        <button type="submit">Complete Order</button>
+    </form>
+}
+else
+{
+    <p>Your cart is empty.</p>
+}
