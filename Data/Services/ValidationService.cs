@@ -34,10 +34,5 @@ namespace JewelleryStoreManagementSystem.Data.Services
             string validInput = @"^[A-Za-z\s]+$";
             return Regex.IsMatch(input, validInput);
         }
-
-        public static bool IsValidInteger(this string input)
-        {
-            return int.TryParse(input, out _);
-        }
     }
 }
