@@ -94,7 +94,7 @@ namespace JewelleryStoreManagementSystem.Data.Services
             }
         }
 
-        public void DeleteOrder(int customerId) 
+        public void DeleteOrderItems(int customerId) 
         {
             Customer customer = _customerRepository.GetCustomerById(customerId);
             if (customer.Orders.Count > 0)
@@ -106,6 +106,12 @@ namespace JewelleryStoreManagementSystem.Data.Services
                     _orderItemRepository.SaveChanges();
                 }
             }
+        }
+
+        public void DeleteOrderItem(OrderItem orderItem)
+        {
+            _orderItemRepository.Remove(orderItem);
+            _orderItemRepository.SaveChanges();
         }
     }
 }

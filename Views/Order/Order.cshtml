@@ -28,12 +28,16 @@
             <div class="main-container">
                 <img src="@Url.Content(item.Product.ImagePath)" alt="@item.Product.Name" class="product-image">
 
-                <div class="product-details">
-                    <h4>@item.Product.Name</h4>
-                    <h5>Total Price: @string.Format("{0:C}", item.Product.Price * item.Quantity)</h5>
-                    <h6>Quantity: @item.Quantity</h6>
-                    <h7>Remove</h7>
-                </div>
+                <form asp-controller="Order" asp-action="Remove" method="post">
+                    <input type="hidden" name="name" value="@item.Product.Name" />
+                    <div class="product-details">
+                        <h4>@item.Product.Name</h4>
+                        <h5>Total Price: @string.Format("{0:C}", item.Product.Price * item.Quantity)</h5>
+                        <h6>Quantity: @item.Quantity</h6>
+                        <button type="submit">Remove</button>
+                    
+                    </div>
+                </form>
 
             </div>
         }

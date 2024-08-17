@@ -80,6 +80,8 @@ namespace JewelleryStoreManagementSystem.Controllers
             else
             {
                 _customerService.AddCustomer(name, email, streetNumber, street, city, state, phoneNumber, password);
+                Customer customer = _customerRepository.GetCustomerByEmail(email);
+                TempData["CustomerId"] = customer.CustomerId;
                 return RedirectToAction("Home", "Home");
             }
         }
