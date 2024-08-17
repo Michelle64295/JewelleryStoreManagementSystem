@@ -79,5 +79,23 @@ namespace JewelleryStoreManagementSystem.Tests
             Assert.Contains("peter.parker@example.com", customersEmail.ToList());
             Assert.Contains("tonystark29@example.com", customersEmail.ToList());
         }
+
+        [Test]
+        public void GetCustomerById_ExistingId_ReturnsCustomer()
+        {
+            var customer = _customerRepository.GetCustomerById(1);
+
+            Assert.IsNotNull(customer);
+            Assert.That(customer.CustomerId, Is.EqualTo(1));
+            Assert.That(customer.FullName, Is.EqualTo("Peter Parker"));
+        }
+
+        [Test]
+        public void GetCustomerById_NonExistingId_ThrowsException()
+        {
+            var exception = Assert.Throws<NullReferenceException>(() => _customerRepository.GetCustomerById(11));
+            Assert.That(exception.Message, Is.EqualTo("Object reference not set to an instance of an object."));
+
+        }
     }
 }
