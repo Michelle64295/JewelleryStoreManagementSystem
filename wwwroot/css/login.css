@@ -4,31 +4,40 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-color: #e9e3d8;
 }
+
 
 .container {
     display: flex;
     overflow: hidden;
     width: 100%;
     max-width: 1100px;
-    height: 700px;
+    height: auto;
     margin: auto;
+    border-radius: 8px;
+    box-shadow: none;
+    align-items: stretch;
 }
+
 
 .image {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: auto;
     overflow: hidden;
+    border-radius: 15px;
 }
 
 .image img {
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    border-radius: 15px;
 }
+
 
 .form-container {
     flex: 1;
@@ -41,12 +50,16 @@ body {
     align-items: center;
     max-width: 530px;
     width: 100%;
-    height: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: none;
 }
+
 
 input[type="radio"] {
     display: none;
 }
+
 
 .tabs {
     display: flex;
@@ -58,12 +71,10 @@ input[type="radio"] {
     background: none;
     border: none;
     padding: 10px 20px;
-    margin: 0 40px;
     cursor: pointer;
     font-size: 20px;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
-    font-style: normal;
     color: #cec3b9;
     transition: border-bottom 0.1s ease, color 0.1s ease;
 }
@@ -74,21 +85,24 @@ input[type="radio"] {
     color: #9b7d61;
 }
 
+
 .content {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .form {
     display: none;
 }
 
-#login-tab:checked ~ .content #login-content, 
+#login-tab:checked ~ .content #login-content,
 #signup-tab:checked ~ .content #signup-content {
     display: block;
 }
 
-form input {
+
+form input, form select {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -99,32 +113,16 @@ form input {
     font-size: 16px;
     color: black;
     box-sizing: border-box;
+    background-color: transparent;
+    color: black;
 }
 
 form select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    border: none;
-    border-bottom: 2px solid #cec3b9;
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 16px;
-    color: black;
-    box-sizing: border-box;
-    background-color: none;
     appearance: none;
+    color: #cec3b9;
 }
 
-form select option[value=""] {
-    display: none;
-}
-
-form select:focus {
-    outline: none;
-}
-
-form input:focus {
+form input:focus, form select:focus {
     outline: none;
 }
 
@@ -134,26 +132,92 @@ form input::placeholder {
 
 form button {
     padding: 12px;
-    margin: 30px auto 0;
+    margin: 50px auto 0;
     display: block;
     border: none;
     background-color: #9b7d61;
-    font-size: 20px;
+    font-size: 16px;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
-    font-style: normal;
     color: #e9e3d8;
     cursor: pointer;
     width: 50%;
-    font-size: 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
 form button:hover {
     background-color: #817060;
 }
 
+
 .error-message {
     color: #e74c3c;
     font-size: 14px;
     margin-top: 15px;
+}
+
+
+@media (min-width: 769px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .form-container {
+        padding: 40px;
+    }
+
+    .tab-label {
+        font-size: 20px;
+    }
+
+    form button {
+        width: 50%;
+        font-size: 16px;
+    }
+}
+
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .image {
+        height: 200px; 
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    .tab-label {
+        font-size: 18px;
+    }
+
+    form button {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .tab-label {
+        font-size: 16px;
+    }
+
+    form button {
+        font-size: 12px;
+    }
+
+    .image {
+        height: 150px; 
+    }
+
+    .form-container {
+        padding: 15px;
+        width: 100%;
+    }
 }
