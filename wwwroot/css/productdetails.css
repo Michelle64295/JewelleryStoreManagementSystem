@@ -54,10 +54,9 @@ li a:hover {
     margin-right: 20px;
 }
 
-    .product-image img {
-        width: 100%;
-        border: 1px solid #ddd;
-    }
+.product-image img {
+    width: 100%;
+}
 
 .product-details {
     flex: 2;

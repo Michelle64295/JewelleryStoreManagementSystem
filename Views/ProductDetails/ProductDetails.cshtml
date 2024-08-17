@@ -31,7 +31,7 @@
         <div class="product-details">
             <ul>
                 <li style="display: inline-block;"><h4>@Model.Name</h4></li>
-                <li style="display: inline-block; float: right;"><h4>@Model.Price</h4></li>
+                <li style="display: inline-block; float: right;"><h4>$@Model.Price</h4></li>
             </ul>
             <p>@Model.Description</p>
             <form asp-controller="Order" asp-action="Order" method="post">
