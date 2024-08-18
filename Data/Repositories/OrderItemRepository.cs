@@ -15,7 +15,7 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
 
         public List<OrderItem> GetAllOrderItemsInOrder(int orderId)
         {
-            return _context.OrderItems.Include(c => c.ProductId).Where(oi => oi.OrderId == orderId).ToList();
+            return _context.OrderItems.Where(oi => oi.OrderId == orderId).ToList();
         }
 
         public OrderItem? GetOrderItemByOrderIdAndProductId(int orderId, int productId)
