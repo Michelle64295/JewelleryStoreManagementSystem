@@ -76,24 +76,6 @@ namespace JewelleryStoreManagementSystem.Controllers
             }
         }
 
-        //[HttpPost]
-        //public IActionResult CompleteOrder()
-        //{
-        //    int? customerId = (int?)TempData["CustomerId"];
-        //    if (customerId != null)
-        //    {
-        //        int id = (int)customerId;
-        //        _orderItemService.DeleteOrderItems(id);
-        //        Order order = _orderService.GetOrder(id);
-        //        TempData.Keep("CustomerId");
-        //        return RedirectToAction("Order", order);
-        //    }
-        //    else
-        //    {
-        //        throw new NullReferenceException();
-        //    }
-        //}
-
         [HttpPost]
         public IActionResult Remove(string name)
         {

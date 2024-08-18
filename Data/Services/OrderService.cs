@@ -112,28 +112,38 @@ namespace JewelleryStoreManagementSystem.Data.Services
 
         public async Task SendEmailAsync(int customerId, string htmlContent)
         {
-            Customer customer = _customerRepository.GetCustomerById(customerId);
-            string toEmail = customer.Email;
-            string subject = "Order Confirmation";
-
-            string fromEmail = "foranassessmentplsignore@gmail.com";
-            string password = "augl shub ewxt kijx";
-
-            MailMessage mailMessage = new MailMessage();
-            mailMessage.To.Add(toEmail);
-            mailMessage.Subject = subject;
-            mailMessage.Body = htmlContent;
-            mailMessage.IsBodyHtml = true;
-            mailMessage.From = new MailAddress(fromEmail);
-
-            using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
+            try
             {
-                smtpClient.Port = 587;
-                smtpClient.Credentials = new System.Net.NetworkCredential(fromEmail, password);
-                smtpClient.EnableSsl = true;
+                Customer customer = _customerRepository.GetCustomerById(customerId);
+                string toEmail = customer.Email;
+                string subject = "Order Confirmation";
 
-                await smtpClient.SendMailAsync(mailMessage);
+                string fromEmail = "foranassessmentplsignore@gmail.com";
+                string password = "augl shub ewxt kijx";
 
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.To.Add(toEmail);
+                mailMessage.Subject = subject;
+                mailMessage.Body = htmlContent;
+                mailMessage.IsBodyHtml = true;
+                mailMessage.From = new MailAddress(fromEmail);
+
+                using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
+                {
+                    smtpClient.Port = 587;
+                    smtpClient.Credentials = new System.Net.NetworkCredential(fromEmail, password);
+                    smtpClient.EnableSsl = true;
+
+                    await smtpClient.SendMailAsync(mailMessage);
+                }
+            }
+            catch (SmtpException smtpEx)
+            {
+                Console.WriteLine($"An SMTP error occured while sending the email: {smtpEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while sending the email: {ex.Message}");
             }
         }
 
