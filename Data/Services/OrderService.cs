@@ -78,10 +78,10 @@ namespace JewelleryStoreManagementSystem.Data.Services
             </head>
 
             <body>
-                <h1>Thank you for your order!</h1>
+                <h1 style='font-family: Arial, sans-serif; font-size: 20px;'>Thank you for your order!</strong>
                 <br/>
-                <br/>
-                <h2>Order Summary</h2>";
+                <h2 style='font-family: Arial, sans-serif; font-size: 18px;'>Order Summary</h2>
+                <br/>";
 
             foreach (OrderItem item in order.OrderItems)
             {
@@ -91,17 +91,17 @@ namespace JewelleryStoreManagementSystem.Data.Services
 
                 htmlContent += $@"
                     <div>
-                        <p><strong>Product:</strong> {item.Product.Name} </p>
-                        <p><strong>Quantity:</strong> {item.Quantity} </p>
-                        <p><strong>Price:</strong> {string.Format("{0:C}", item.Product.Price * item.Quantity)} </p>
+                        <p style='font-size: 14px;'><strong>Product:</strong> {item.Product.Name} </p>
+                        <p style='font-size: 14px;'><strong>Quantity:</strong> {item.Quantity} </p>
+                        <p style='font-size: 14px;'><strong>Price:</strong> {string.Format("{0:C}", item.Product.Price * item.Quantity)} </p>
                     </div>
                     <br/>";
             }
 
             htmlContent += $@"
                     <div>
-                        <p><strong>SUBTOTAL:</strong> {string.Format("{0:C}", totalPrice)}</p>
-                        <p><strong>Total Items:</strong> {totalItems}</p>
+                        <p style='font-size: 16px;'><strong>SUBTOTAL:</strong> {string.Format("{0:C}", totalPrice)}</p>
+                        <p style='font-size: 16px;'><strong>Total Items:</strong> {totalItems}</p>
                     </div>
               
             </body>
