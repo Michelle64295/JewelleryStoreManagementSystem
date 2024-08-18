@@ -48,34 +48,40 @@ namespace JewelleryStoreManagementSystem.Controllers
         [HttpPost]
         public IActionResult SignUp(string name, string email, int streetNumber, string street, string city, string state, string phoneNumber, string password)
         {
+            bool isValid = true;
             if (!ValidationService.IsValidFullName(name))
             {
                 ModelState.AddModelError(string.Empty, "Invalid Name. Full Name must consist of only letters and spaces!");
-                return View("Login");
+                isValid = false;
             }
             if (!ValidationService.IsValidEmail(email) || _customerRepository.GetAllCustomersByEmail().Contains(email))
             {
                 ModelState.AddModelError(string.Empty, "Invalid Email!");
-                return View("Login");
+                isValid = false;
             }
             if (!ValidationService.IsValidString(street))
             {
                 ModelState.AddModelError(string.Empty, "Invalid Street Name. Street Name must consist of only letters and spaces!");
-                return View("Login");
+                isValid = false;
             }
             if (!ValidationService.IsValidString(city))
             {
                 ModelState.AddModelError(string.Empty, "Invalid City. City must consist of only letters and spaces!");
-                return View("Login");
+                isValid = false;
             }
             if (!ValidationService.IsValidPhone(phoneNumber))
             {
                 ModelState.AddModelError(string.Empty, "Invalid Phone Number. Phone Number must be 10 digits long and start with '04'!");
-                return View("Login");
+                isValid = false;
             }
             if (!ValidationService.IsValidPassword(password))
             {
                 ModelState.AddModelError(string.Empty, "Invalid Password. Password must be at least 5 characters long!");
+                isValid = false;
+            }
+
+            if (!isValid)
+            {
                 return View("Login");
             }
             else
