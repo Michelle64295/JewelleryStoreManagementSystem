@@ -29,5 +29,18 @@ namespace JewelleryStoreManagementSystem.Data
                 optionsBuilder.UseSqlite($"Data Source={DbPath}");
             }
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>()
+                        .HasMany(o => o.OrderItems)
+                        .WithOne(oi => oi.Order)
+                        .HasForeignKey(oi => oi.OrderId);
+
+            modelBuilder.Entity<OrderItem>()
+                        .HasOne(oi => oi.Product)
+                        .WithMany()
+                        .HasForeignKey(oi => oi.ProductId);
+        }
     }
 }
