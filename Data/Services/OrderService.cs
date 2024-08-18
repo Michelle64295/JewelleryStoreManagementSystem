@@ -1,6 +1,8 @@
 ﻿using JewelleryStoreManagementSystem.Data.Models;
 using JewelleryStoreManagementSystem.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Net.Mail;
 #nullable enable
 
 namespace JewelleryStoreManagementSystem.Data.Services
@@ -63,6 +65,82 @@ namespace JewelleryStoreManagementSystem.Data.Services
                 Order existingOrder = _orderRepository.GetOrderByCustomerId(customer.CustomerId);
                 return existingOrder;
             }
+        }
+
+        public string GenerateEmailHtml(Order order)
+        {
+            decimal totalPrice = 0;
+            int totalItems = 0;
+
+            string htmlContent = $@"
+            <html>
+            <head>
+            </head>
+
+            <body>
+                <h1>Thank you for your order!</h1>
+                <br/>
+                <br/>
+                <h2>Order Summary</h2>";
+
+            foreach (OrderItem item in order.OrderItems)
+            {
+                decimal priceOfOrderItem = item.Quantity * item.Product.Price;
+                totalPrice += priceOfOrderItem;
+                totalItems += item.Quantity;
+
+                htmlContent += $@"
+                    <div>
+                        <p><strong>Product:</strong> {item.Product.Name} </p>
+                        <p><strong>Quantity:</strong> {item.Quantity} </p>
+                        <p><strong>Price:</strong> {string.Format("{0:C}", item.Product.Price * item.Quantity)} </p>
+                    </div>";
+            }
+
+            htmlContent += $@"
+                    <div>
+                        <p><strong>SUBTOTAL:</strong> {string.Format("{0:C}", totalPrice)}</p>
+                        <p><strong>Total Items:</strong> {totalItems}</p>
+                    </div>
+              
+            </body>
+            </html>";
+
+            return htmlContent;
+        }
+
+        public async Task SendEmailAsync(int customerId, string htmlContent)
+        {
+            Customer customer = _customerRepository.GetCustomerById(customerId);
+            string toEmail = "bellaminmichelle@gmail.com";
+            string subject = "Order Confirmation";
+
+            string fromEmail = "foranassessmentplsignore@gmail.com";
+            string password = "augl shub ewxt kijx";
+
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.To.Add(toEmail);
+            mailMessage.Subject = subject;
+            mailMessage.Body = htmlContent;
+            mailMessage.IsBodyHtml = true;
+            mailMessage.From = new MailAddress(fromEmail);
+
+            using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
+            {
+                smtpClient.Port = 587;
+                smtpClient.Credentials = new System.Net.NetworkCredential(fromEmail, password);
+                smtpClient.EnableSsl = true;
+
+                await smtpClient.SendMailAsync(mailMessage);
+
+            }
+        }
+
+        public async Task CompleteOrderAsync(int customerId)
+        {
+            Order order = GetOrder(customerId);
+            string htmlContent = GenerateEmailHtml(order);
+            await SendEmailAsync(customerId, htmlContent);
         }
     }
 }
