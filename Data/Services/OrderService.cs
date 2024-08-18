@@ -113,7 +113,7 @@ namespace JewelleryStoreManagementSystem.Data.Services
         public async Task SendEmailAsync(int customerId, string htmlContent)
         {
             Customer customer = _customerRepository.GetCustomerById(customerId);
-            string toEmail = "bellaminmichelle@gmail.com";
+            string toEmail = customer.Email;
             string subject = "Order Confirmation";
 
             string fromEmail = "foranassessmentplsignore@gmail.com";
