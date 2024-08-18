@@ -1,5 +1,6 @@
 ﻿using JewelleryStoreManagementSystem.Data.Models;
 using JewelleryStoreManagementSystem.Data.Repositories;
+#nullable enable
 
 namespace JewelleryStoreManagementSystem.Data.Services
 {
