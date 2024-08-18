@@ -71,7 +71,7 @@ namespace JewelleryStoreManagementSystem.Tests
         }
 
         [Test]
-        public void GetAllCustomersEmail_ReturnsAllCustomersEmailOnly()
+        public void GetAllCustomersByEmail_ReturnsAllCustomersEmailOnly()
         {
             var customersEmail = _customerRepository.GetAllCustomersByEmail();
 
@@ -95,7 +95,23 @@ namespace JewelleryStoreManagementSystem.Tests
         {
             var exception = Assert.Throws<NullReferenceException>(() => _customerRepository.GetCustomerById(11));
             Assert.That(exception.Message, Is.EqualTo("Object reference not set to an instance of an object."));
+        }
 
+        [Test]
+        public void GetCustomerByEmail_ExistingEmail_ReturnsCustomer()
+        {
+            var customer = _customerRepository.GetCustomerByEmail("peter.parker@example.com");
+
+            Assert.IsNotNull(customer);
+            Assert.That(customer.CustomerId, Is.EqualTo(1));
+            Assert.That(customer.Email, Is.EqualTo("peter.parker@example.com"));
+        }
+
+        [Test]
+        public void GetCustomerByEmail_NonExistingEmail_ThrowsException()
+        {
+            var exception = Assert.Throws<NullReferenceException>(() => _customerRepository.GetCustomerByEmail("hello"));
+            Assert.That(exception.Message, Is.EqualTo("Object reference not set to an instance of an object."));
         }
     }
 }

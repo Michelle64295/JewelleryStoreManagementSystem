@@ -23,6 +23,7 @@ builder.Services.AddScoped<OrderRepository>();
 builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<OrderService>();
+builder.Services.AddScoped<OrderItemService>();
 
 var app = builder.Build();
 

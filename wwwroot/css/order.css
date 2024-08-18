@@ -121,6 +121,16 @@ img {
     cursor: pointer;
 }
 
+.complete-order-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+.complete-order-form button {
+    width: auto; 
+}
+
 .total {
     margin: 20px auto;
     max-width: 1000px;

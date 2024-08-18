@@ -45,6 +45,23 @@ namespace JewelleryStoreManagementSystem.Tests
         }
 
         [Test]
+        public void GetOrderByCustomerId_ExistingCustomerId_ReturnsOrder()
+        {
+            var order = _orderRepository.GetOrderByCustomerId(1);
+
+            Assert.IsNotNull(order);
+            Assert.That(order.CustomerId, Is.EqualTo(1));
+            Assert.That(order.OrderId, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void GetOrderByCustomerId_NonExistingCustomerId_ReturnsOrder()
+        {
+            var exception = Assert.Throws<NullReferenceException>(() => _orderRepository.GetOrderByCustomerId(5));
+            Assert.That(exception.Message, Is.EqualTo("Object reference not set to an instance of an object."));
+        }
+
+        [Test]
         public void GetAllOrders_ReturnsAllOrders()
         {
             var orders = _orderRepository.GetAllOrders();

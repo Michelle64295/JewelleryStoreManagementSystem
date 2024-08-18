@@ -47,13 +47,13 @@
 
             </div>
         }
-
+  
         <div class="total">
             <h3>SUBTOTAL: @string.Format("{0:C}", totalPrice)</h3>
             <p>Total Items: @totalItems</p>
         </div>
 
-        <form asp-controller="Order" asp-action="CompleteOrder" method="post">
+        <form asp-controller="Order" asp-action="CompleteOrder" method="post" class="complete-order-form">
             <button type="submit">Complete Order</button>
         </form>
     }

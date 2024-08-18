@@ -10,15 +10,17 @@ namespace JewelleryStoreManagementSystem.Controllers
     public class OrderController : Controller
     {
         private readonly OrderService _orderService;
+        private readonly OrderItemService _orderItemService;
         private readonly OrderItemRepository _orderItemRepository;
         private readonly ProductRepository _productRepository;
 
 
-        public OrderController(OrderService orderService, OrderItemRepository orderItemRepository, ProductRepository productRepository)
+        public OrderController(OrderService orderService, OrderItemRepository orderItemRepository, ProductRepository productRepository, OrderItemService orderItemService)
         {
             _orderService = orderService;
             _orderItemRepository = orderItemRepository;
             _productRepository = productRepository;
+            _orderItemService = orderItemService;
         }
 
         [HttpPost]
@@ -62,7 +64,7 @@ namespace JewelleryStoreManagementSystem.Controllers
             if (customerId != null)
             {
                 int id = (int)customerId;
-                _orderService.DeleteOrderItems(id);
+                _orderItemService.DeleteOrderItems(id);
                 Order order = _orderService.GetOrder(id);
                 TempData.Keep("CustomerId");
                 return RedirectToAction("Order", order);
@@ -88,7 +90,7 @@ namespace JewelleryStoreManagementSystem.Controllers
 
                 if (orderItem != null) 
                 {
-                    _orderService.DeleteOrderItem(orderItem);
+                    _orderItemService.DeleteOrderItem(orderItem);
                     return RedirectToAction("Order", order);
                 }
                 else
