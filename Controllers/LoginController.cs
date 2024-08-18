@@ -51,7 +51,7 @@ namespace JewelleryStoreManagementSystem.Controllers
             bool isValid = true;
             if (!ValidationService.IsValidFullName(name))
             {
-                ModelState.AddModelError(string.Empty, "Invalid Name. Full Name must consist of only letters and spaces!");
+                ModelState.AddModelError(string.Empty, "Invalid Name. Full Name must consist of only letters and spaces! Make sure you enter both first name and last name!");
                 isValid = false;
             }
             if (!ValidationService.IsValidEmail(email) || _customerRepository.GetAllCustomersByEmail().Contains(email))
