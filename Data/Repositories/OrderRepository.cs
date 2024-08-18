@@ -20,13 +20,7 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
 
         public Order GetOrderByCustomerId(int customerId)
         {
-            //Order? order =  GetAllOrders().Where(o => o.CustomerId == customerId).FirstOrDefault();
-            //Order? order =  GetAllOrders().FirstOrDefault(o => o.CustomerId == customerId);
-
-            Order? order = _context.Orders
-                            .Include(o => o.OrderItems)
-                            .ThenInclude(oi => oi.Product)
-                            .FirstOrDefault(o => o.CustomerId == customerId);
+            Order? order =  GetAllOrders().Where(o => o.CustomerId == customerId).FirstOrDefault();
 
             if (order == null) {
                 throw new NullReferenceException();
