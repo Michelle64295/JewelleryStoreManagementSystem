@@ -70,7 +70,7 @@ li a:hover {
     margin: 20px auto;
     max-width: 1000px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 .product-image {
@@ -119,4 +119,28 @@ img {
     padding-top: 5px;
     margin-top: 5px;
     cursor: pointer;
+}
+
+.total {
+    margin: 20px auto;
+    max-width: 1000px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.total h3 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #9b7d61;
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+.total p {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    color: #9b7d61;
+    padding-top: 5px;
+    margin-top: 5px;
 }
