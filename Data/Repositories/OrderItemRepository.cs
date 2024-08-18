@@ -1,4 +1,5 @@
 ﻿using JewelleryStoreManagementSystem.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 #nullable enable
 namespace JewelleryStoreManagementSystem.Data.Repositories
@@ -12,14 +13,9 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
             _context = context;
         }
 
-        public IEnumerable<OrderItem> GetAllOrderItems()
-        {
-            return _context.OrderItems.ToList();
-        }
-
         public List<OrderItem> GetAllOrderItemsInOrder(int orderId)
         {
-            return _context.OrderItems.Where(oi => oi.OrderId == orderId).ToList();
+            return _context.OrderItems.Include(c => c.ProductId).Where(oi => oi.OrderId == orderId).ToList();
         }
 
         public OrderItem? GetOrderItemByOrderIdAndProductId(int orderId, int productId)

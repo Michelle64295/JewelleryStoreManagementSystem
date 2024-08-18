@@ -15,26 +15,13 @@ namespace JewelleryStoreManagementSystem.Data.Repositories
 
         public IEnumerable<Order> GetAllOrders()
         {
-            return _context.Orders.ToList();
+            return _context.Orders.Include(o => o.OrderItems).ThenInclude(oi => oi.Product).ToList();
         }
 
         public Order GetOrderByCustomerId(int customerId)
         {
-            Order? order =  _context.Orders.Include(o => o.OrderItems).ThenInclude(oi => oi.Product).Where(o => o.CustomerId == customerId).FirstOrDefault();
+            Order? order =  GetAllOrders().Where(o => o.CustomerId == customerId).FirstOrDefault();
             if (order == null) {
-                throw new NullReferenceException();
-            }
-            else
-            {
-                return order;
-            }
-        }
-
-        public Order? GetOrderById(int orderId)
-        {
-            Order? order = _context.Orders.Include(o => o.OrderItems).ThenInclude(o => o.Product).SingleOrDefault(o => o.OrderId == orderId);
-            if (order == null)
-            {
                 throw new NullReferenceException();
             }
             else

@@ -120,3 +120,13 @@ img {
     margin-top: 5px;
     cursor: pointer;
 }
+
+.complete-order-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+.complete-order-form button {
+    width: auto; 
+}
