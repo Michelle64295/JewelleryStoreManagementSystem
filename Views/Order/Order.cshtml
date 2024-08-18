@@ -23,8 +23,15 @@
 
     @if (Model.OrderItems != null && Model.OrderItems.Any())
     {
+        decimal totalPrice = 0;
+        int totalItems = 0;
+
         @foreach (var item in Model.OrderItems)
         {
+            decimal priceOfOrderItem = item.Quantity * item.Product.Price;
+            totalPrice += priceOfOrderItem;
+            totalItems += item.Quantity;
+
             <div class="main-container">
                 <img src="@Url.Content(item.Product.ImagePath)" alt="@item.Product.Name" class="product-image">
 
@@ -35,12 +42,16 @@
                         <h5>Total Price: @string.Format("{0:C}", item.Product.Price * item.Quantity)</h5>
                         <h6>Quantity: @item.Quantity</h6>
                         <button type="submit">Remove</button>
-                    
                     </div>
                 </form>
 
             </div>
         }
+
+        <div class="total">
+            <h3>SUBTOTAL: @string.Format("{0:C}", totalPrice)</h3>
+            <p>Total Items: @totalItems</p>
+        </div>
 
         <form asp-controller="Order" asp-action="CompleteOrder" method="post">
             <button type="submit">Complete Order</button>
