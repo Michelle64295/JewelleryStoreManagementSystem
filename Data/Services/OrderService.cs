@@ -94,7 +94,8 @@ namespace JewelleryStoreManagementSystem.Data.Services
                         <p><strong>Product:</strong> {item.Product.Name} </p>
                         <p><strong>Quantity:</strong> {item.Quantity} </p>
                         <p><strong>Price:</strong> {string.Format("{0:C}", item.Product.Price * item.Quantity)} </p>
-                    </div>";
+                    </div>
+                    <br/>";
             }
 
             htmlContent += $@"
